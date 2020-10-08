@@ -1,18 +1,29 @@
 <template>
   <v-app>
     <v-container fluid>
-      <p class="text-center">
-        You have {{followers}} followers
+      <p class="text-center text-body-2">
+        You have <span class="text-h5">{{ followers.toFixed(0) }}</span> followers
+        <br>
+        You are getting {{ (followersPerSecond * 10).toFixed(2) }} followers per 10 seconds
       </p>
       <v-row justify="center">
-        <v-btn to="/">
+        <v-btn
+          to="/"
+          class="mx-1"
+        >
           Followers
         </v-btn>
-        <v-btn to="/achievements">
+        <v-btn
+          to="/achievements"
+          class="mx-1"
+        >
           <v-icon left>mdi-trophy</v-icon>
           Achievements
         </v-btn>
-        <v-btn to="/settings">
+        <v-btn
+          to="/settings"
+          class="mx-1"
+        >
           <v-icon left>mdi-cog</v-icon>
           Settings
         </v-btn>
@@ -36,6 +47,6 @@ export default Vue.extend({
 
 <style>
 html {
-  overflow-y: auto;
+  overflow-y: auto !important;
 }
 </style>

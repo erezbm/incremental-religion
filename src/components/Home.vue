@@ -1,7 +1,18 @@
 <template>
-  <v-btn @click="followers++">
-    Add follower
-  </v-btn>
+  <div>
+    <div
+      v-for="(tier, i) in missionaryTiers"
+      :key="i"
+    >
+      Tier {{i + 1}}: {{tier.count.toFixed(0)}}
+      <v-btn
+        @click="tier.count++"
+        outlined
+      >
+        Buy
+      </v-btn>
+    </div>
+  </div>
 </template>
 
 <script lang="ts">
