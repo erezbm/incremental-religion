@@ -1,22 +1,24 @@
-import MissionaryTier from '@/models/MissionaryTier';
+import Converters from '@/models/Converters';
 
 const state = {
+  religionName: 'Your Super Awesome Religion',
   money: 0,
-  get moneyPerSecond() { return this.followers; },
+  get moneyPerSecond() { return Math.floor(this.followers) * 0.5; },
   followers: 0,
-  get followersPerSecond() { return this.missionaryTiers[0].productionPerSecond; },
-  missionaryTiers: Array.from({ length: 3 }, () => new MissionaryTier()),
+  get followersPerSecond() { return this.convertersTiers[0].convertsPerSecond; },
+  convertersTiers: Array.from({ length: 3 }, (_, i) => new Converters(i + 1)),
+  achievements: [],
 };
 
 const actions = {
-  updateFromDelta(delta: number) {
+  update(delta: number) {
     const deltaInSeconds = delta / 1000;
-    // order matters unless we save getter values before the assignments
+    // update in this order because the getters are changing
     state.money += state.moneyPerSecond * deltaInSeconds;
     state.followers += state.followersPerSecond * deltaInSeconds;
-    for (let i = 1; i < state.missionaryTiers.length; i++) {
-      const tier = state.missionaryTiers[i];
-      state.missionaryTiers[i - 1].count += tier.productionPerSecond * deltaInSeconds;
+    for (let i = 1; i < state.convertersTiers.length; i++) {
+      const tier = state.convertersTiers[i];
+      state.convertersTiers[i - 1].count += tier.convertsPerSecond * deltaInSeconds;
     }
   },
 };

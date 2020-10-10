@@ -13,4 +13,4 @@ new Vue({
   render: (h) => h(App),
 }).$mount('#app');
 
-gameLoop(settings.state.updatesPerSecond);
+gameLoop.startOrRestart(settings.state.updatesPerSecond);

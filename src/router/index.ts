@@ -1,8 +1,8 @@
 import Vue from 'vue';
 import VueRouter, { RouteConfig } from 'vue-router';
-import Home from '../components/Home.vue';
-import Settings from '../components/Settings.vue';
-import Achievements from '../components/Achievements.vue';
+import Home from '@/views/Home.vue';
+import Settings from '@/views/Settings.vue';
+import Achievements from '@/views/Achievements.vue';
 
 Vue.use(VueRouter);
 

@@ -1,10 +1,10 @@
 <template>
   <div>
     <div
-      v-for="(tier, i) in missionaryTiers"
+      v-for="(tier, i) in convertersTiers"
       :key="i"
     >
-      Tier {{i + 1}}: {{tier.count.toFixed(0)}}
+      Converters Tier {{ i + 1 }}: {{ formatAsInteger(tier.count) }}
       <v-btn
         @click="tier.count++"
         outlined
@@ -18,8 +18,10 @@
 <script lang="ts">
 import Vue from 'vue';
 import gameStore from '@/stores/game';
+import formattingMixin from '@/mixins/formattingMixin';
 
 export default Vue.extend({
   data: () => gameStore.state,
+  mixins: [formattingMixin],
 });
 </script>

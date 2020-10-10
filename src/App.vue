@@ -1,11 +1,7 @@
 <template>
   <v-app>
     <v-container fluid>
-      <p class="text-center text-body-2">
-        You have <span class="text-h5">{{ followers.toFixed(0) }}</span> followers
-        <br>
-        You are getting {{ (followersPerSecond * 10).toFixed(2) }} followers per 10 seconds
-      </p>
+      <GameHeader />
       <v-row justify="center">
         <v-btn
           to="/"
@@ -38,11 +34,9 @@
 
 <script lang="ts">
 import Vue from 'vue';
-import gameStore from './stores/game';
+import GameHeader from './components/GameHeader.vue';
 
-export default Vue.extend({
-  data: () => gameStore.state,
-});
+export default Vue.extend({ components: { GameHeader } });
 </script>
 
 <style>
