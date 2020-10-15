@@ -6,7 +6,7 @@
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
     "lint": "vue-cli-service lint",
-    "deploy": "npm run build && xcopy /e /h /q .git\\ dist\\.git\\ && cd dist && git symbolic-ref HEAD refs/heads/gh-pages && git reset && git fetch && git reset origin/gh-pages && git add . && git commit -m \"deploy\" && git push && cd .. && rmdir /s /q dist"
+    "deploy": "npm run build && git clone -q -n -b gh-pages --depth 1 --single-branch https://github.com/erezbm/incremental-religion.git gh-pages-root && xcopy /e /q dist gh-pages-root\\ && rmdir /s /q dist && cd gh-pages-root && git add . && git commit -m \"deploy\" && git push && cd .. && rmdir /s /q gh-pages-root"
   },
   "dependencies": {
     "core-js": "^3.6.5",
