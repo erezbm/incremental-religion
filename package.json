@@ -5,7 +5,8 @@
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
-    "lint": "vue-cli-service lint"
+    "lint": "vue-cli-service lint",
+    "deploy": "npm run build && xcopy /e /h /q .git\\ dist\\.git\\ && cd dist && git symbolic-ref HEAD refs/heads/gh-pages && git reset && git fetch && git reset origin/gh-pages && git add . && git commit -m \"deploy\" && git push && cd .. && rmdir /s /q dist"
   },
   "dependencies": {
     "core-js": "^3.6.5",
